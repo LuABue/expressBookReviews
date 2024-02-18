@@ -67,6 +67,16 @@ regd_users.put("/auth/review/:isbn", (req, res) => {
   //return res.status(300).json({message: "Yet to be implemented"});
 });
 
+regd_users.delete("/auth/review/:isbn", (req, res) => {
+    // Update the code here
+    const isbn = req.params.isbn;
+      if (isbn){
+          delete books[isbn].reviews
+      }
+      res.send(`Book with the isbn  ${isbn} reviews deleted.`);
+    //res.send("Yet to be implemented")//This line is to be replaced with actual return value
+  });
+
 module.exports.authenticated = regd_users;
 module.exports.isValid = isValid;
 module.exports.users = users;
